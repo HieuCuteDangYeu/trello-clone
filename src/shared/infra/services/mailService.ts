@@ -1,7 +1,8 @@
+import { IEmailService } from '@shared/core/services/IEmailService';
 import { google } from 'googleapis';
 import { config } from '../../../config';
 
-export class MailService {
+export class MailService implements IEmailService {
   private oauth2Client;
 
   constructor() {

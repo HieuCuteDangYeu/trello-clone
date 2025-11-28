@@ -1,5 +1,5 @@
-import { MailService } from '@modules/auth/services/mailService';
 import { IUserRepo } from '@modules/users/repos/userRepos';
+import { IEmailService } from '@shared/core/services/IEmailService';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 import { User } from '../../../users/domain/user';
@@ -10,12 +10,12 @@ import { RegisterDTO } from './RegisterDTO';
 export class RegisterUseCase {
   private userRepo: IUserRepo;
   private roleRepo: IRoleRepo;
-  private mailService: MailService;
+  private mailService: IEmailService;
 
   constructor(
     userRepo: IUserRepo,
     roleRepo: IRoleRepo,
-    mailService: MailService,
+    mailService: IEmailService,
   ) {
     this.userRepo = userRepo;
     this.roleRepo = roleRepo;

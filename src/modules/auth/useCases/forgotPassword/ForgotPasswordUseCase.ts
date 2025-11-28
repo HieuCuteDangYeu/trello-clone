@@ -1,11 +1,11 @@
 import { IUserRepo } from '@modules/users/repos/userRepos';
+import { IEmailService } from '@shared/core/services/IEmailService';
 import { v4 as uuidv4 } from 'uuid';
-import { MailService } from '../../services/mailService';
 
 export class ForgotPasswordUseCase {
   constructor(
     private userRepo: IUserRepo,
-    private mailService: MailService,
+    private mailService: IEmailService,
   ) {}
 
   public async execute(email: string): Promise<void> {

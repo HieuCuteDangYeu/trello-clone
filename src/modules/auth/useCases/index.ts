@@ -1,7 +1,6 @@
 import { MongoRoleRepo } from '@modules/auth/repos/mongoRoleRepo';
 import { AuthService } from '@modules/auth/services/authService';
 import { GoogleAuthService } from '@modules/auth/services/googleAuthService';
-import { MailService } from '@modules/auth/services/mailService';
 import { ForgotPasswordController } from '@modules/auth/useCases/forgotPassword/ForgotPasswordController';
 import { ForgotPasswordUseCase } from '@modules/auth/useCases/forgotPassword/ForgotPasswordUseCase';
 import { GetMeController } from '@modules/auth/useCases/getMe/GetMeController';
@@ -19,6 +18,7 @@ import { ResetPasswordUseCase } from '@modules/auth/useCases/resetPassword/Reset
 import { VerifyEmailController } from '@modules/auth/useCases/verifyEmail/VerifyEmailController';
 import { VerifyEmailUseCase } from '@modules/auth/useCases/verifyEmail/VerifyEmailUseCase';
 import { mongoUserRepo } from '@modules/users/useCases';
+import { MailService } from '@shared/infra/services/mailService';
 
 const mailService = new MailService();
 const authService = new AuthService();
