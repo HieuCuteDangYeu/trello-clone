@@ -13,9 +13,7 @@ export class DeleteBoardController extends BaseController {
   ): Promise<void | Response> {
     try {
       const { id } = req.params;
-      const userId = req.user!.userId;
-
-      await this.useCase.execute(id, userId);
+      await this.useCase.execute(id, req.user!);
       return this.ok(res, { message: 'Board deleted' });
     } catch (err: unknown) {
       if (err instanceof Error && err.message.includes('owner')) {
