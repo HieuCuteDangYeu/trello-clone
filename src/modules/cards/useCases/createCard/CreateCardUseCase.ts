@@ -32,6 +32,10 @@ export class CreateCardUseCase {
 
     const card = Card.create({
       title: props.title,
+      translation: props.translation,
+      example: props.example,
+      pronunciation: props.pronunciation,
+      description: props.description,
       listId: props.listId,
       boardId: props.boardId,
       position: newPosition,

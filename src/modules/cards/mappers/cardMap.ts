@@ -3,6 +3,9 @@ import { Card } from '../domain/card';
 export interface ICardPersistence {
   _id: string;
   title: string;
+  translation: string;
+  example?: string | null;
+  pronunciation?: string | null;
   description?: string | null;
   listId: string;
   boardId: string;
@@ -16,6 +19,9 @@ export class CardMap {
     return {
       _id: card.id,
       title: card.title,
+      translation: card.translation,
+      example: card.example,
+      pronunciation: card.pronunciation,
       description: card.description,
       listId: card.listId,
       boardId: card.boardId,
@@ -29,6 +35,9 @@ export class CardMap {
     return Card.create(
       {
         title: raw.title,
+        translation: raw.translation,
+        example: raw.example || undefined,
+        pronunciation: raw.pronunciation || undefined,
         description: raw.description || undefined,
         listId: raw.listId,
         boardId: raw.boardId,

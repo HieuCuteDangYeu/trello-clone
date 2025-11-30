@@ -47,6 +47,9 @@ export class UpdateCardUseCase {
     if (props.title || props.description !== undefined) {
       card.updateDetails({
         title: props.title,
+        translation: props.translation,
+        example: props.example,
+        pronunciation: props.pronunciation,
         description: props.description,
       });
     }

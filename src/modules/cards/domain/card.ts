@@ -2,17 +2,29 @@ import { Entity } from '@shared/core/Entity';
 
 interface CardProps {
   title: string;
-  description?: string;
+  translation: string;
+  example?: string;
+  pronunciation?: string;
   listId: string;
-  boardId: string; // Denormalized for permission checks
+  boardId: string;
   position: number;
   memberIds: string[];
   createdAt: Date;
+  description?: string;
 }
 
 export class Card extends Entity<CardProps> {
   get title(): string {
     return this.props.title;
+  }
+  get translation(): string {
+    return this.props.translation;
+  }
+  get example(): string | undefined {
+    return this.props.example;
+  }
+  get pronunciation(): string | undefined {
+    return this.props.pronunciation;
   }
   get description(): string | undefined {
     return this.props.description;
@@ -40,15 +52,21 @@ export class Card extends Entity<CardProps> {
   public static create(
     props: {
       title: string;
+      translation: string;
       listId: string;
       boardId: string;
       position: number;
       description?: string;
+      example?: string;
+      pronunciation?: string;
     },
     id?: string,
   ): Card {
     if (props.title.length < 1) {
-      throw new Error('Card title cannot be empty.');
+      throw new Error('Word cannot be empty.');
+    }
+    if (props.translation.length < 1) {
+      throw new Error('Translation cannot be empty.');
     }
 
     return new Card(
@@ -66,9 +84,19 @@ export class Card extends Entity<CardProps> {
     this.props.position = newPosition;
   }
 
-  public updateDetails(props: { title?: string; description?: string }): void {
+  public updateDetails(props: {
+    title?: string;
+    translation?: string;
+    description?: string;
+    example?: string;
+    pronunciation?: string;
+  }): void {
     if (props.title) this.props.title = props.title;
+    if (props.translation) this.props.translation = props.translation;
     if (props.description !== undefined)
       this.props.description = props.description;
+    if (props.example !== undefined) this.props.example = props.example;
+    if (props.pronunciation !== undefined)
+      this.props.pronunciation = props.pronunciation;
   }
 }
